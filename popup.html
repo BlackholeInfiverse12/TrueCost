@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrueCost - Hidden Fee Detector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <img src="icons/icon32.png" alt="TrueCost" class="logo-icon">
+        <h1 class="logo-text">TrueCost</h1>
+      </div>
+      <div class="status-indicator" id="statusIndicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Scanning...</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+      <!-- Loading State -->
+      <div class="loading-state" id="loadingState">
+        <div class="spinner"></div>
+        <p>Analyzing checkout page...</p>
+      </div>
+
+      <!-- Fee Breakdown -->
+      <div class="fee-breakdown hidden" id="feeBreakdown">
+        <div class="breakdown-header">
+          <h2>Cost Breakdown</h2>
+          <div class="site-info" id="siteInfo"></div>
+        </div>
+
+        <div class="price-details" id="priceDetails">
+          <!-- Price items will be populated by JavaScript -->
+        </div>
+
+        <div class="total-section">
+          <div class="total-row">
+            <span>Total:</span>
+            <span id="totalAmount">₹0</span>
+          </div>
+          <div class="hidden-charges" id="hiddenCharges">
+            <span>Hidden Charges:</span>
+            <span class="amount-highlight">₹0 (0%)</span>
+          </div>
+        </div>
+
+        <!-- Visual Chart -->
+        <div class="chart-container">
+          <div class="chart-bar">
+            <div class="base-price-bar" id="basePriceBar"></div>
+            <div class="hidden-fees-bar" id="hiddenFeesBar"></div>
+          </div>
+          <div class="chart-labels">
+            <span class="base-label">Base Price</span>
+            <span class="hidden-label">Hidden Fees</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Fees Detected -->
+      <div class="no-fees hidden" id="noFees">
+        <div class="success-icon">✓</div>
+        <h3>Great! No Hidden Fees</h3>
+        <p>This checkout appears transparent with no hidden charges.</p>
+      </div>
+
+      <!-- Error State -->
+      <div class="error-state hidden" id="errorState">
+        <div class="error-icon">⚠</div>
+        <h3>Unable to Analyze</h3>
+        <p>This page doesn't appear to be a checkout page, or we couldn't detect pricing information.</p>
+      </div>
+    </div>
+
+    <!-- Suggestions Section -->
+    <div class="suggestions hidden" id="suggestions">
+      <h3>💡 Savings Suggestions</h3>
+      <div class="suggestion-list" id="suggestionList">
+        <!-- Suggestions will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="history-section">
+      <div class="section-header">
+        <h3>Recent Scans</h3>
+        <button class="clear-history" id="clearHistory">Clear</button>
+      </div>
+      <div class="history-list" id="historyList">
+        <p class="no-history">No recent transactions</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="monetization-banner">
+        <p>🚀 <strong>Coming Soon:</strong> TrueCost Mobile App</p>
+        <small>Track fees across all your apps and get exclusive deals</small>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

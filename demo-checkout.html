@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Checkout - Test TrueCost Extension</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .checkout-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .product-info {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .price-breakdown {
+            margin: 20px 0;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 8px 0;
+        }
+        .price-row.subtotal {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .price-row.fee {
+            color: #666;
+            font-size: 14px;
+        }
+        .price-row.total {
+            border-top: 2px solid #333;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+        .checkout-btn {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2196f3;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .instructions ol {
+            margin: 10px 0;
+        }
+        .instructions li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h3>🚀 How to Test the TrueCost Extension</h3>
+        <ol>
+            <li><strong>Download the extension files</strong> - Click the three dots in the top right and select "Download ZIP"</li>
+            <li><strong>Open Chrome</strong> and go to <code>chrome://extensions/</code></li>
+            <li><strong>Enable Developer Mode</strong> (toggle in top right)</li>
+            <li><strong>Click "Load unpacked"</strong> and select the extracted extension folder</li>
+            <li><strong>Visit this demo page</strong> and the extension will automatically detect the hidden fees below!</li>
+            <li><strong>Click the TrueCost icon</strong> in your Chrome toolbar to see the fee breakdown</li>
+        </ol>
+        <p><strong>Note:</strong> The extension will highlight hidden fees and show a notification when it detects them on this page.</p>
+    </div>
+
+    <div class="checkout-container">
+        <div class="product-info">
+            <h2>Premium Wireless Headphones</h2>
+            <p>High-quality noise-canceling headphones with premium sound</p>
+            <img src="/placeholder.svg?height=200&width=300" alt="Premium Wireless Headphones" style="width: 100%; max-width: 300px; border-radius: 8px;">
+        </div>
+
+        <div class="price-breakdown">
+            <div class="price-row subtotal">
+                <span>Subtotal:</span>
+                <span class="price" data-price="199.99">$199.99</span>
+            </div>
+            
+            <div class="price-row fee">
+                <span>Processing Fee:</span>
+                <span class="price fee-amount" data-price="8.99">$8.99</span>
+            </div>
+            
+            <div class="price-row fee">
+                <span>Service Charge:</span>
+                <span class="price fee-amount" data-price="12.50">$12.50</span>
+            </div>
+            
+            <div class="price-row fee">
+                <span>Convenience Fee:</span>
+                <span class="price fee-amount" data-price="5.99">$5.99</span>
+            </div>
+            
+            <div class="price-row">
+                <span>Tax:</span>
+                <span class="price" data-price="18.15">$18.15</span>
+            </div>
+            
+            <div class="price-row total">
+                <span>Total:</span>
+                <span class="price total-amount" data-price="245.62">$245.62</span>
+            </div>
+        </div>
+
+        <button class="checkout-btn" onclick="showCheckoutMessage()">Complete Purchase</button>
+    </div>
+
+    <script>
+        function showCheckoutMessage() {
+            alert('This is just a demo! The TrueCost extension should have detected $27.48 in hidden fees (13.7% markup) on this page.');
+        }
+
+        // Add some dynamic pricing to make it more realistic
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Demo checkout page loaded - TrueCost extension should detect fees here');
+        });
+    </script>
+</body>
+</html>
